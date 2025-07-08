@@ -1,38 +1,297 @@
+body{
+
+background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+
+
+}
 .App {
+  max-width: 860px;
+  margin: 40px auto;
+}
+
+/* ---------- HEADINGS ---------- */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #f1f1f1;
+  text-shadow: 2px 2px #000;
+}
+
+/* ---------- GAME BUTTON ---------- */
+button {
+  background: none;
+  border: 2px solid #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: yellow;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* ---------- GRID SYSTEM ---------- */
+.card-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+/* ---------- CARD STYLING ---------- */
+.card {
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card img {
+  height: 120px;
+  width: auto;
+  display: block;
+  border: 2px solid white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+/* card front face */
+.card .front {
+  transform: rotateY(90deg);
+  transition: all ease-in 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* card back face */
+.card .back {
+  transition: all ease-in 0.3s;
+  transition-delay: 0.2s;
+}
+
+/* flip logic */
+.flipped .front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.flipped .back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+
+/* ---------- TURNS COUNTER ---------- */
+.turns-counter {
+  background: linear-gradient(135deg, #c23866, #ff6b81);
+  color: white;
+  padding: 10px 20px;
+  margin-top: 30px;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.turns-counter:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- LANDING PAGE ---------- */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #5f0a87, #a4508b);
+  color: white;
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home-title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 4px black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #f0e6f6;
+}
+
+.home-buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.home-btn {
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.home-btn.easy {
+  background-color: #28a745;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.home-btn.easy:hover {
+  background-color: red;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.home-btn.medium {
+  background-color: #ffc107;
+    color: white;
+}
+.home-btn.hard {
+  background-color: blue;
+   color: white;
+}
+.home-btn.medium:hover {
+  background-color: blue;
+   color: white;
+}
+.home-btn.night {
+  background-color: red;
+   color: white;
+}
+
+.home-btn.hard:hover,.home-btn.night:hover {
+  background-color: #e0a800;
+}
+.game-info {
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  margin: 10px 0;
+}
+.footer {
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.875rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* ========== SMALL DEVICES (phones) ========== */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .home-box {
+    padding: 20px;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .home-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .card img {
+    height: 90px;
+  }
+
+  .turns-counter {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .game-info {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+/* ========== MEDIUM DEVICES (tablets) ========== */
+@media (max-width: 768px) {
+  .App {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .card img {
+    height: 100px;
+  }
+}
+
+/* ========== LARGE DEVICES (wider desktops) ========== */
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card img {
+    height: 120px;
+  }
+
+  .home-box {
+    max-width: 500px;
+  }
+
+  .home-title {
+    font-size: 3rem;
   }
 }
